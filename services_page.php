@@ -38,7 +38,7 @@ include 'includes/header.php';
 
             <div class="service-card" data-service-card>
                 
-                <div class="card-header" data-card-toggle class="collapsed">
+                <div class="card-header collapsed" data-card-toggle>
                     <div class="card-title-group">
                         <span class="service-icon bulb"><i class="fas fa-lightbulb"></i></span>
                         <div>

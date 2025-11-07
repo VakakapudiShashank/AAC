@@ -265,18 +265,79 @@ body.mobile-nav-open .mobile-nav-menu {
     text-align: center;
     padding: 4rem 20px;
     color: var(--color-white);
+    /* Ensure text alignment within the section is centered */
+    overflow: hidden; 
 }
 
-.hero-section h1 {
-    font-size: 3rem;
-    font-weight: 700;
+/* ------------------ HERO ANIMATION STYLES ------------------ */
+
+/* Animation Keyframes */
+
+/* 1. Subtle entrance for the main heading */
+@keyframes fadeInSlide {
+    0% { opacity: 0; transform: translateY(20px); letter-spacing: -0.1em; }
+    50% { opacity: 0.5; letter-spacing: 0.2em; }
+    100% { opacity: 1; transform: translateY(0); letter-spacing: normal; }
+}
+
+/* 2. Typing animation for the subtitle (cursor blink) */
+@keyframes blink {
+    50% { border-color: transparent; }
+}
+
+/* Base Heading Style and Animation */
+.hero-animated-h1 {
+    font-size: 3.5rem; /* Slightly larger */
+    font-weight: 800; /* Extra bold */
     margin-bottom: 1rem;
+    color: var(--color-white);
+    display: flex; /* Make it a flex container to separate words */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Space between words */
 }
 
-.hero-section p {
-    font-size: 1.25rem;
-    color: var(--color-light-grey);
+.hero-animated-h1 span {
+    display: inline-block;
+    opacity: 0;
+    animation: fadeInSlide 1.5s ease-out forwards;
+    /* Optional: Use a brand color accent on hover/focus */
+    transition: color 0.3s ease;
 }
+.hero-animated-h1 span:hover {
+    color: var(--color-primary-yellow);
+}
+
+/* Stagger the word animation */
+.hero-animated-h1 .word-1 { animation-delay: 0.1s; }
+.hero-animated-h1 .word-2 { animation-delay: 0.2s; }
+.hero-animated-h1 .word-3 { animation-delay: 0.3s; }
+.hero-animated-h1 .word-4 { animation-delay: 0.4s; }
+
+
+/* Subtitle Typing Animation */
+.hero-animated-p {
+    /* Base style */
+    font-size: 1.3rem;
+    color: var(--color-light-grey);
+    white-space: nowrap; /* Keep text on one line */
+    overflow: hidden; /* Hide overflowing text */
+    width: 0;
+    /* Animation definition: uses the same duration as the H1 stagger + H1 duration */
+    animation: 
+        typing 2s steps(30, end) 1s forwards, /* 2s duration, 30 steps (characters) */
+        blink .75s step-end infinite 3s; /* Blink starts after typing finishes */
+    border-right: .15em solid var(--color-primary-blue); /* The "cursor" */
+    font-family: 'Poppins', monospace; /* Use a monospace font for typing realism, fallback to Poppins */
+    max-width: 100%;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* ------------------ END HERO ANIMATION STYLES ------------------ */
 
 /* =======================
        5. PAGE SECTIONS (Placeholder/General)
@@ -647,6 +708,72 @@ body.mobile-nav-open .mobile-nav-menu {
 
 
 /* =======================
+       NEW: TOP LOGO SCROLLER SECTION
+======================== */
+
+#top-logo-scroller {
+    /* MODIFICATION: Change background to pure white to match light-bg-override sections */
+    background-color: var(--color-white);
+    padding: 30px 0;
+    margin-bottom: 0; 
+}
+
+.logo-scroller-container {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.logo-scroller-track {
+    display: flex;
+    width: max-content; /* Ensure the track is wide enough for all duplicate logos */
+    animation: scroll-logos 45s linear infinite; /* Animation duration adjusted for more logos */
+}
+
+.logo-scroller-track:hover {
+    animation-play-state: paused;
+}
+
+.logo-scroller-track .logo-card {
+    /* Copy logo-card styling from below but make them inline/flex items */
+    background-color: var(--color-white); /* MODIFICATION: Match container background */
+    padding: 10px 20px;
+    height: 90px;
+    min-width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none; /* Remove shadow for continuous look */
+    border-radius: 0;
+}
+
+.logo-scroller-track .logo-card img {
+    max-width: 100%;
+    max-height: 60px;
+    object-fit: contain;
+    /* Use grayscale filter for scroller logos as seen in the image */
+    filter: grayscale(100%); 
+    opacity: 0.8;
+    transition: none;
+}
+
+.logo-scroller-track .logo-card img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+@keyframes scroll-logos {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        /* Move exactly one set of logos (50% of the duplicated track width) */
+        transform: translateX(-50%); 
+    }
+}
+
+
+/* =======================
        9. COLLABORATIONS SECTION
 ======================== */
 .collaboration-tabs {
@@ -778,7 +905,7 @@ body.mobile-nav-open .mobile-nav-menu {
     /* Enforce maximum logo height for uniformity */
     max-height: 60px; 
     width: auto;
-    /* MODIFICATION: Removed 'filter: grayscale(100%);' to restore original colors */
+    /* College logos in the static grid display in full color */
     filter: none; 
     opacity: 0.7;
     transition: opacity 0.3s;
@@ -1737,9 +1864,20 @@ body.mobile-nav-open .mobile-nav-menu {
         /* Hide main nav button on smaller screens if using mobile menu button */
         display: none;
     }
+    
+    /* Responsive adjustment for scroller height on smaller screens */
+    #top-logo-scroller {
+        padding: 20px 0;
+    }
+    .logo-scroller-track .logo-card {
+        height: 70px;
+        min-width: 140px;
+    }
+    .logo-scroller-track .logo-card img {
+        max-height: 45px;
+    }
 }
 @media (max-width: 650px) {
-    /* FIX: Ensure funding form stacks vertically on smaller devices */
     .funding-form-grid {
         grid-template-columns: 1fr; 
     }
@@ -1759,7 +1897,6 @@ body.mobile-nav-open .mobile-nav-menu {
 }
 @media (max-width: 600px) {
     .team-grid {
-        /* Revert to stacking on smallest screens for readability */
         display: grid;
         grid-template-columns: 1fr;
         gap: 20px;
@@ -1767,7 +1904,7 @@ body.mobile-nav-open .mobile-nav-menu {
         overflow-x: hidden;
     }
     .team-card {
-        min-width: auto; /* Allow full width */
+        min-width: auto;
     }
     
     .impact-stats-grid {

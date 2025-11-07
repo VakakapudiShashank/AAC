@@ -108,43 +108,26 @@
                     </div>
 
                     <div id="college-partners" class="tab-content">
-                        <div class="logo-carousel-container">
-                            <div class="partner-grid-logo logo-track">
-                                
-                                <div class="logo-card"><img src="assets/jamia_hamdard_logo.png" alt="Jamia Hamdard University Logo"></div>
-                                <div class="logo-card"><img src="assets/Vignan Logo.webp" alt="Vignan's University Logo"></div>
-                                <div class="logo-card"><img src="assets/RGUKT.jpg" alt="RGUKT Logo"></div>
-                                <div class="logo-card"><img src="assets/ap_skill_dev_prog_logo.png" alt="Andhra Pradesh Skill Development Corporation Logo"></div>
-                                <div class="logo-card"><img src="assets/ESWAR_logo.png" alt="Eswar Institutions Logo"></div>
-                                <div class="logo-card"><img src="assets/vikram_simhapuri.png" alt="Vikram Simhapuri University Logo"></div>
-                                <div class="logo-card"><img src="assets/sri_padmavati.png" alt="Sri Padmavati Logo"></div>
-                                <div class="logo-card"><img src="assets/KBN_logo.jpg" alt="KBN College Logo"></div>
-                                <div class="logo-card"><img src="assets/ciet_logo.webp" alt="CIET Logo"></div>
-                                <div class="logo-card"><img src="assets/baptla_logo.jpg" alt="Bapatla Logo"></div>
-                                <div class="logo-card"><img src="assets/dr_abdul_haq_logo.jpg" alt="Dr Abdul Haq Urdu University Logo"></div>
-                                <div class="logo-card"><img src="assets/vignan_phamacy_logo.jpg" alt="Vignan Pharmacy College Logo"></div>
-                                <div class="logo-card"><img src="assets/SMR_university_logo.jpg" alt="SRM University - AP Logo"></div>
-                                <div class="logo-card"><img src="assets/VIT_AP_logo.png" alt="VIT-AP Logo"></div>
-                                <div class="logo-card"><img src="assets/Amrita_Vishwa_Vidyapeetham_logo.png" alt="Amrita University Logo"></div>
-                                <div class="logo-card"><img src="assets/jamia_hamdard_logo.png" alt="Jamia Hamdard University Logo"></div>
-                                <div class="logo-card"><img src="assets/Vignan Logo.webp" alt="Vignan's University Logo"></div>
-                                <div class="logo-card"><img src="assets/RGUKT.jpg" alt="RGUKT Logo"></div>
-                                <div class="logo-card"><img src="assets/ap_skill_dev_prog_logo.png" alt="Andhra Pradesh Skill Development Corporation Logo"></div>
-                                <div class="logo-card"><img src="assets/ESWAR_logo.png" alt="Eswar Institutions Logo"></div>
-                                <div class="logo-card"><img src="assets/vikram_simhapuri.png" alt="Vikram Simhapuri University Logo"></div>
-                                <div class="logo-card"><img src="assets/sri_padmavati.png" alt="Sri Padmavati Logo"></div>
-                                <div class="logo-card"><img src="assets/KBN_logo.jpg" alt="KBN College Logo"></div>
-                                <div class="logo-card"><img src="assets/ciet_logo.webp" alt="CIET Logo"></div>
-                                <div class="logo-card"><img src="assets/baptla_logo.jpg" alt="Bapatla Logo"></div>
-                                <div class="logo-card"><img src="assets/dr_abdul_haq_logo.jpg" alt="Dr Abdul Haq Urdu University Logo"></div>
-                                <div class="logo-card"><img src="assets/vignan_phamacy_logo.jpg" alt="Vignan Pharmacy College Logo"></div>
-                                <div class="logo-card"><img src="assets/SMR_university_logo.jpg" alt="SRM University - AP Logo"></div>
-                                <div class="logo-card"><img src="assets/VIT_AP_logo.png" alt="VIT-AP Logo"></div>
-                                <div class="logo-card"><img src="assets/Amrita_Vishwa_Vidyapeetham_logo.png" alt="Amrita University Logo"></div>
+                        <div class="partner-grid-logo">
+                            
+                            <div class="logo-card"><img src="assets/jamia_hamdard_logo.png" alt="Jamia Hamdard University Logo"></div>
+                            <div class="logo-card"><img src="assets/Vignan Logo.webp" alt="Vignan's University Logo"></div>
+                            <div class="logo-card"><img src="assets/RGUKT.jpg" alt="RGUKT Logo"></div>
+                            <div class="logo-card"><img src="assets/ap_skill_dev_prog_logo.png" alt="Andhra Pradesh Skill Development Corporation Logo"></div>
+                            <div class="logo-card"><img src="assets/ESWAR_logo.png" alt="Eswar Institutions Logo"></div>
+                            <div class="logo-card"><img src="assets\Vikram_simhapuri_logo.jpg" alt="Vikram Simhapuri University Logo"></div>
+                            <div class="logo-card"><img src="assets\sri Padmavathi logo.jpg" alt="Sri Padmavati Logo"></div>
+                            <div class="logo-card"><img src="assets/KBN_logo.jpg" alt="KBN College Logo"></div>
+                            <div class="logo-card"><img src="assets/ciet_logo.webp" alt="CIET Logo"></div>
+                            <div class="logo-card"><img src="assets/baptla_logo.jpg" alt="Bapatla Logo"></div>
+                            <div class="logo-card"><img src="assets/dr_abdul_haq_logo.jpg" alt="Dr Abdul Haq Urdu University Logo"></div>
+                            <div class="logo-card"><img src="assets/vignan_phamacy_logo.jpg" alt="Vignan Pharmacy College Logo"></div>
+                            <div class="logo-card"><img src="assets/SMR_university_logo.jpg" alt="SRM University - AP Logo"></div>
+                            <div class="logo-card"><img src="assets/VIT_AP_logo.png" alt="VIT-AP Logo"></div>
+                            <div class="logo-card"><img src="assets/Amrita_Vishwa_Vidyapeetham_logo.png" alt="Amrita University Logo"></div>
 
-                            </div>
                         </div>
-                    </div>
+                        </div>
 
                     <div id="govt-partners" class="tab-content">
                         <div class="partner-grid-2col">
@@ -230,6 +213,7 @@
                 </div>
             </div>
         </section>
+
 
         <section id="contact" class="page-section light-bg-override">
             <div class="container contact-grid">

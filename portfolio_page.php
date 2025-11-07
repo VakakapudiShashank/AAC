@@ -130,4 +130,4 @@ include 'includes/header.php';
 <?php 
 // Include the footer file
 include 'includes/footer.php'; 
-?>  
+?>

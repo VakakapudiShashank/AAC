@@ -778,7 +778,8 @@ body.mobile-nav-open .mobile-nav-menu {
     /* Enforce maximum logo height for uniformity */
     max-height: 60px; 
     width: auto;
-    filter: grayscale(100%); 
+    /* MODIFICATION: Removed 'filter: grayscale(100%);' to restore original colors */
+    filter: none; 
     opacity: 0.7;
     transition: opacity 0.3s;
     object-fit: contain;
@@ -1097,6 +1098,18 @@ body.mobile-nav-open .mobile-nav-menu {
 .footer-branding {
     max-width: 350px;
     text-align: left;
+}
+
+/* Styling for the logo in the footer */
+.footer-branding .logo {
+    display: block;
+    margin-bottom: 15px; 
+}
+.footer-branding .logo img {
+    /* Filters to make the logo white/inverted for visibility on dark background */
+    filter: brightness(0) invert(1);
+    max-height: 60px;
+    width: auto;
 }
 
 .footer-logo-text {

@@ -3,7 +3,9 @@
     <div class="container">
         <div class="footer-content-grid">
             <div class="footer-col footer-branding">
-                <p class="footer-logo-text">Andhra Angel Networks</p>
+                <a href="index.php" class="logo">
+                    <img src="assets/Andhra angel network logos.png" alt="Andhra Angel Networks Logo">
+                </a>
                 <p class="footer-tagline">Turning Ideas Into Impacts.</p>
             </div>
             <div class="footer-col">

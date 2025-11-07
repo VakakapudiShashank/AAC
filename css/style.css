@@ -17,6 +17,13 @@
     --color-primary-blue-darker: #0056b3;
     --color-accent-orange: #FF9933;
     --color-accent-green: #198754;
+    
+    /* NEW: Funding Modal colors (Matching Reference Image) */
+    --funding-modal-input-bg: var(--color-light-grey); /* E9ECEF */
+    --funding-modal-input-color: #495057; /* Dark text */
+    --funding-modal-input-border: #dee2e6; /* Lighter border */
+    --funding-modal-content-bg: var(--color-white);
+    --transition-speed: 0.2s;
 }
 
 /* Basic Reset */
@@ -52,7 +59,7 @@ ul {
 }
 
 /* Focus outlines for accessibility */
-a:focus, button:focus, input:focus, textarea:focus {
+a:focus, button:focus, input:focus, textarea:focus, select:focus {
     outline: 3px solid rgba(0,123,255,0.18);
     outline-offset: 2px;
 }
@@ -494,18 +501,19 @@ body.mobile-nav-open .mobile-nav-menu {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); 
     border: 1px solid rgba(0,0,0,0.05); 
     
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Prepare for JS dynamic shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
     
-    /* FIX: Removed background color override */
     background-color: transparent; 
     background-size: cover;
     background-position: center; 
-    cursor: pointer; /* Added for interaction */
+    cursor: pointer;
 }
 
+/* Base hover effects - JS will set the colored box-shadow */
 .event-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    /* JS will set the box-shadow property */
 }
 
 .event-info {
@@ -940,20 +948,20 @@ body.mobile-nav-open .mobile-nav-menu {
     background-color: var(--color-white); 
     padding: 20px;
     border-radius: 10px;
-    text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); 
     border: 1px solid var(--color-light-grey);
-    transition: transform 0.3s ease;
-    cursor: pointer; /* Indicate interactivity */
     
-    /* Ensure cards remain distinct columns in a flex row */
+    /* Prepare for JS dynamic shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    cursor: pointer;
     min-width: 250px; 
-    flex-shrink: 0; /* Prevents cards from shrinking when in a flex row */
+    flex-shrink: 0;
 }
 
+/* Base hover effects - JS will set the colored box-shadow */
 .team-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    /* JS will set the box-shadow property */
 }
 
 .team-card .team-photo, /* Hide old photo if still present */
@@ -1378,17 +1386,17 @@ body.mobile-nav-open .mobile-nav-menu {
     padding: 25px;
     border-radius: 12px;
     border: 1px solid var(--color-light-grey);
-    text-align: left;
-    /* Professional Redesign Enhancements */
-    position: relative;
+    
+    /* Prepare for JS dynamic shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
+/* Base hover effects - JS will set the colored box-shadow */
 .service-card:hover {
     transform: translateY(-5px);
-    border-color: var(--color-primary-blue); /* Highlight border on hover */
-    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.15); /* Primary-colored shadow on hover */
+    border-color: var(--color-primary-blue); /* Keep border highlight */
+    /* JS will set the box-shadow property */
 }
 
 .card-header {
@@ -1534,13 +1542,16 @@ body.mobile-nav-open .mobile-nav-menu {
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     background-color: var(--color-white);
+    
+    /* Prepare for JS dynamic shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    aspect-ratio: 1 / 1; /* Ensures cards are square */
+    aspect-ratio: 1 / 1;
 }
 
+/* Base hover effects - JS will set the colored box-shadow */
 .portfolio-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    /* JS will set the box-shadow property */
 }
 
 .card-link {
@@ -1624,16 +1635,25 @@ body.mobile-nav-open .mobile-nav-menu {
     padding: 2rem;
 }
 
+/* --- Container Hover Effect (Funding Modal) --- */
+.funding-container:hover .funding-modal-content {
+    /* Subtle lift and deeper shadow for the modal content */
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 0 3px var(--color-primary-blue);
+}
+
 .funding-modal-content {
-    background-color: var(--color-white);
+    background-color: var(--funding-modal-content-bg);
     margin: auto;
     padding: 40px 30px;
     border-radius: 12px;
     width: 90%;
-    max-width: 800px; /* Max width to match the reference image's spaciousness */
+    max-width: 800px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
     position: relative;
     animation: fadeInScale 0.3s ease-out;
+    /* Ensure smooth transitions for hover effect */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
 }
 
 @keyframes fadeInScale {
@@ -1683,65 +1703,109 @@ body.mobile-nav-open .mobile-nav-menu {
     grid-column: 1 / -1; /* Spans both columns */
 }
 
-/* Targeting all input types and selectors within the modal */
-.funding-modal-content input[type="text"],
-.funding-modal-content input[type="email"],
+/* --- Input Group and Floating Label Setup --- */
+.input-group {
+    position: relative; /* Crucial for positioning the label */
+}
+
+.funding-modal-content input,
 .funding-modal-content select,
 .funding-modal-content textarea {
     width: 100%;
-    padding: 14px 12px; /* Increased vertical padding for better feel */
-    border: 1px solid #dee2e6; /* Lighter border color */
-    border-radius: 6px; /* Slightly rounded corners */
-    background-color: #f8f9fa; /* Very light gray background */
+    padding: 14px 12px;
+    border: 2px solid var(--funding-modal-input-border); /* Thicker border for better focus effect */
+    border-radius: 6px;
+    background-color: var(--funding-modal-input-bg);
+    color: var(--funding-modal-input-color);
     font-family: inherit;
     font-size: 1rem;
-    color: var(--color-dark-bg);
     outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
-    /* Ensure select elements are full height */
-    height: 44px; 
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed), background-color var(--transition-speed);
+    box-sizing: border-box; 
+    height: 44px; /* Ensure consistency for inputs/select */
     appearance: none; /* Hide default selector arrow */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236c757d'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E"); /* Custom selector arrow */
+    
+    /* REMOVED: Custom arrow background image */
+    background-image: none;
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 18px;
 }
 
-/* Placeholder Text Styling (for the reference image look) */
-.funding-modal-content ::placeholder {
-    color: #adb5bd;
-    opacity: 1; 
-}
-
 .funding-modal-content textarea {
-    resize: vertical;
+    height: auto;
     min-height: 120px;
-    height: auto; /* Override fixed height */
 }
 
+/* --- Input Focus/Hover Animation --- */
 .funding-modal-content input:focus,
 .funding-modal-content select:focus,
 .funding-modal-content textarea:focus {
     border-color: var(--color-primary-blue);
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.15); /* Soft glow */
     background-color: var(--color-white);
 }
 
-.funding-modal-content .btn-primary {
+/* --- Floating Label Default State --- */
+.floating-label {
+    position: absolute;
+    top: 50%;
+    left: 12px; /* Matches input padding */
+    transform: translateY(-50%);
+    color: #6c757d;
+    pointer-events: none;
+    transition: all var(--transition-speed) ease;
+    font-size: 1rem;
+    padding: 0 4px;
+    background-color: transparent;
+    z-index: 1;
+}
+
+.textarea-label {
+    top: 14px; /* Adjust initial position for textarea (padding is 14px) */
+    transform: translateY(0);
+}
+
+
+/* --- FLOATING LABEL ACTIVE STATE (THE TEMPLATE) --- */
+.floating-label.active {
+    top: 0; /* Move to the top */
+    left: 8px; /* Slightly inward positioning */
+    transform: translateY(-50%); 
+    font-size: 0.75rem; /* Shrink text */
+    color: var(--color-primary-blue);
+    background-color: var(--funding-modal-content-bg); /* Use modal content background to cover input border */
+    z-index: 2;
+}
+
+
+/* --- Submit Button Animation (Matching Reference Image Look) --- */
+.submit-button {
     width: 100%;
-    padding: 18px; /* Larger submit button */
+    padding: 18px; 
     font-size: 1.1rem;
     border-radius: 8px;
-    background-color: #e9ecef; /* Light gray background for Submit Application */
+    /* Use the light grey from the reference image */
+    background-color: var(--color-light-grey); 
     color: var(--color-dark-bg);
     font-weight: 700;
     border: none;
-    transition: background-color 0.3s, color 0.3s;
+    transition: all 0.2s ease-out;
 }
 
-.funding-modal-content .btn-primary:hover {
-    background-color: #ced4da;
+.submit-button:hover {
+    /* Subtle hover effect similar to the previous request */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ced4da; /* Slightly darker light grey on hover */
+    color: var(--color-dark-bg) !important;
 }
+
+.submit-button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 
 /* --- EVENT MODAL STYLES --- */
 .event-modal-content {

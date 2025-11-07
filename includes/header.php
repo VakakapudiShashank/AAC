@@ -166,7 +166,7 @@ foreach ($top_bar_order as $url) {
             </div>
         </div>
     </div>
-    <div id="fundingModal" class="funding-modal" role="dialog" aria-modal="true" aria-labelledby="funding-modal-title">
+    <div id="fundingModal" class="funding-modal funding-container" role="dialog" aria-modal="true" aria-labelledby="funding-modal-title">
         <div class="funding-modal-content">
             <span class="funding-modal-close" data-modal-close>&times;</span>
             <h2 id="funding-modal-title">Apply for Angel Funding 🚀</h2>
@@ -176,24 +176,30 @@ foreach ($top_bar_order as $url) {
             <form action="#" method="POST" class="funding-form">
                 <div class="funding-form-grid">
                     
-                    <div class="form-group">
-                        <input type="text" name="startup_name" placeholder="Startup Name" required>
+                    <div class="form-group input-group">
+                        <label for="startupName" class="floating-label">Startup Name *</label>
+                        <input type="text" id="startupName" name="startup_name" required>
                     </div>
                     
-                    <div class="form-group">
-                        <input type="text" name="founder_name" placeholder="Founder Name" required> </div>
-                    
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Email Address" required>
+                    <div class="form-group input-group">
+                        <label for="founderName" class="floating-label">Founder Name *</label>
+                        <input type="text" id="founderName" name="founder_name" required> 
                     </div>
                     
-                    <div class="form-group">
-                        <input type="text" name="phone" placeholder="Phone Number" required>
+                    <div class="form-group input-group">
+                        <label for="emailAddr" class="floating-label">Email Address *</label>
+                        <input type="email" id="emailAddr" name="email" required>
+                    </div>
+                    
+                    <div class="form-group input-group">
+                        <label for="phoneNum" class="floating-label">Phone Number *</label>
+                        <input type="text" id="phoneNum" name="phone" required>
                     </div>
 
-                    <div class="form-group">
-                        <select name="sector" required>
-                            <option value="" disabled selected>Select Sector</option>
+                    <div class="form-group input-group">
+                        <label for="sectorSelect" class="floating-label">Select Sector *</label>
+                        <select id="sectorSelect" name="sector" required>
+                            <option value="" disabled selected></option>
                             <option value="deeptech">Deeptech</option>
                             <option value="agri">Agri</option>
                             <option value="ev">EV</option>
@@ -202,16 +208,17 @@ foreach ($top_bar_order as $url) {
                         </select>
                     </div>
 
-                    <div class="form-group">
-                        <input type="text" name="website" placeholder="Website/Pitch Deck Link" required>
+                    <div class="form-group input-group">
+                        <label for="websiteLink" class="floating-label">Website/Pitch Deck Link *</label>
+                        <input type="text" id="websiteLink" name="website" required>
                     </div>
 
-                    <div class="form-group form-group-full">
-                        <textarea name="summary" placeholder="Brief Summary of the Problem and Solution (Max 500 characters)" maxlength="500" required></textarea>
+                    <div class="form-group form-group-full input-group">
+                        <label for="summaryTextarea" class="floating-label textarea-label">Brief Summary of the Problem and Solution (Max 500 characters) *</label>
+                        <textarea id="summaryTextarea" name="summary" maxlength="500" required></textarea>
                     </div>
-
-                </div>
-                <button type="submit" class="btn btn-primary">Submit Application</button>
+                    </div>
+                <button type="submit" class="btn btn-primary submit-button">Submit Application</button>
             </form>
         </div>
     </div>

@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const modalId = button.getAttribute('data-modal-toggle');
             if (modalId) {
                 showModal(modalId);
+                // NEW: Trigger Floating Label Check when modal opens
+                if (modalId === 'fundingModal') {
+                    checkAllLabels(); 
+                }
             }
         });
     });
@@ -329,4 +333,72 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // ---------------- Dynamic Random Shadow Logic ----------------
+    const dynamicElements = document.querySelectorAll(
+        '.team-card, .portfolio-card, .service-card, .event-card'
+    );
+
+    // Get color values from CSS variables (Primary Blue and Primary Yellow)
+    const primaryBlue = getComputedStyle(document.documentElement).getPropertyValue('--color-primary-blue').trim();
+    const primaryYellow = getComputedStyle(document.documentElement).getPropertyValue('--color-primary-yellow').trim();
+    
+    const colors = [primaryBlue, primaryYellow];
+
+    dynamicElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+            // 1. Randomly select a color
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            // 2. Apply the dynamic shadow using the selected color
+            // Use a large spread radius (30px) and offset (10px) to make the color noticeable
+            element.style.boxShadow = `0 10px 30px 0 rgba(0, 0, 0, 0.2), 0 0 0 5px ${randomColor}`; 
+        });
+
+        element.addEventListener('mouseleave', () => {
+            // 3. Revert to the original shadow (defined in CSS) on mouse leave
+            element.style.boxShadow = ''; 
+        });
+    });
+    // ---------------- END Dynamic Random Shadow Logic ----------------
+    
+    
+    
+    // ---------------- FLOATING LABEL LOGIC (NEW) ----------------
+    const fundingModalInputs = document.querySelectorAll('#fundingModal .input-group input, #fundingModal .input-group textarea, #fundingModal .input-group select');
+
+    const updateLabel = (input) => {
+        const label = input.previousElementSibling;
+        
+        // Check if input has text, or if it's a select field and an option has been chosen
+        if (input.value || (input.tagName === 'SELECT' && input.value) || (input.tagName === 'SELECT' && input.selectedIndex > 0) || document.activeElement === input) {
+            label.classList.add('active');
+        } else {
+            label.classList.remove('active');
+        }
+    };
+    
+    const checkAllLabels = () => {
+        fundingModalInputs.forEach(updateLabel);
+    };
+
+    fundingModalInputs.forEach(input => {
+        
+        // 1. On focus (click/tab), always lift the label
+        input.addEventListener('focus', () => {
+            const label = input.previousElementSibling;
+            label.classList.add('active');
+        });
+
+        // 2. On blur (focus loss), check content to determine if label should stay up
+        input.addEventListener('blur', () => updateLabel(input));
+
+        // 3. On input/change (for typing, pasting, or selecting)
+        input.addEventListener('input', () => updateLabel(input));
+        input.addEventListener('change', () => updateLabel(input));
+        
+        // 4. Initial check on load (for browsers that remember form data)
+        updateLabel(input);
+    });
+    // ---------------- END FLOATING LABEL LOGIC ----------------
 });

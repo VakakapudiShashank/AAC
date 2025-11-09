@@ -76,6 +76,9 @@ a:focus, button:focus, input:focus, textarea:focus, select:focus {
     transition: all 0.3s ease;
     font-size: 0.95rem;
     border: 2px solid transparent;
+    /* Default desktop button appearance */
+    background-color: var(--color-primary-blue);
+    color: var(--color-white);
 }
 
 .btn-primary:hover {
@@ -92,7 +95,6 @@ a:focus, button:focus, input:focus, textarea:focus, select:focus {
     position: sticky;
     top: 0;
     z-index: 1000;
-    width: 100%;
 }
 
 /* =======================
@@ -230,6 +232,34 @@ body.mobile-nav-open .mobile-nav-menu {
     border-bottom: 1px solid var(--color-border);
 }
 
+/* NEW: Styling for the top funding button */
+.mobile-nav-menu .mobile-funding-button-wrap {
+    margin-bottom: 1.5rem; 
+    padding: 0;
+    border-bottom: none;
+}
+
+.mobile-nav-menu .mobile-funding-button-wrap .btn {
+    width: 100%; /* Make the button full width */
+    padding: 12px;
+    font-size: 1.1rem;
+    margin: 0; /* Remove potential list item padding */
+    
+    /* Ensure the button uses primary colors initially against the dark menu */
+    background-color: var(--color-primary-yellow);
+    color: var(--color-dark-bg);
+    border: 2px solid var(--color-primary-yellow);
+    font-weight: 700;
+}
+
+/* FIX: Mobile Funding Button Hover Effect */
+.mobile-nav-menu .mobile-funding-button-wrap .btn:hover {
+    /* Swap colors on hover (Primary Blue background, White text) */
+    background-color: var(--color-primary-blue);
+    color: var(--color-white);
+    border-color: var(--color-primary-blue);
+}
+
 .mobile-nav-menu a,
 .mobile-nav-menu button { /* Added button for modal trigger */
     display: block;
@@ -244,14 +274,15 @@ body.mobile-nav-open .mobile-nav-menu {
 }
 
 .mobile-nav-menu a:hover,
-.mobile-nav-menu button:hover {
+/* Ensure standard menu buttons/links still respond to hover */
+.mobile-nav-menu li:not(.mobile-funding-button-wrap) a:hover {
     color: var(--color-primary-blue);
 }
 
 .mobile-nav-menu a.btn,
 .mobile-nav-menu button.btn { /* Target the actual button style */
     text-align: center;
-    margin-top: 1.5rem;
+    margin-top: 0; 
     color: var(--color-white);
 }
 

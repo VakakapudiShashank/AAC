@@ -91,6 +91,15 @@ foreach ($top_bar_order as $url) {
                 <i class="fas fa-times"></i>
             </button>
             <ul>
+                <?php 
+                // Move Apply for Funding button to the top
+                $funding_button = array_filter($nav_links, fn($link) => isset($link['is_button']) && $link['is_button']);
+                if (!empty($funding_button)) {
+                    $link = reset($funding_button); // Get the first (and only) button link
+                    echo '<li class="mobile-funding-button-wrap"><button class="btn btn-primary" data-modal-toggle="fundingModal">' . htmlspecialchars($link['text']) . '</button></li>';
+                }
+                ?>
+                
                 <li class="section-title">Primary</li>
                 <?php 
                 foreach (array_filter($nav_links, fn($link) => $link['location'] == 'primary') as $link) {
@@ -108,11 +117,9 @@ foreach ($top_bar_order as $url) {
                 <li class="section-title">Get in Touch</li>
                  <?php 
                 foreach (array_filter($nav_links, fn($link) => $link['location'] == 'contact') as $link) {
-                    $class = isset($link['is_button']) && $link['is_button'] ? 'btn btn-primary' : '';
-                    if (isset($link['is_button'])) {
-                        echo '<li><button class="' . $class . '" data-modal-toggle="fundingModal">' . htmlspecialchars($link['text']) . '</button></li>';
-                    } else {
-                        echo '<li><a href="' . $link['href'] . '" class="' . $class . '">' . htmlspecialchars($link['text']) . '</a></li>';
+                    // Only render Contact Us link here, the button is now at the top
+                    if (!isset($link['is_button'])) {
+                        echo '<li><a href="' . $link['href'] . '">' . htmlspecialchars($link['text']) . '</a></li>';
                     }
                 }
                 ?>

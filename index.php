@@ -153,8 +153,8 @@
                             <div class="logo-card"><img src="assets/RGUKT.jpg" alt="RGUKT Logo"></div>
                             <div class="logo-card"><img src="assets/ap_skill_dev_prog_logo.png" alt="Andhra Pradesh Skill Development Corporation Logo"></div>
                             <div class="logo-card"><img src="assets/ESWAR_logo.png" alt="Eswar Institutions Logo"></div>
-                            <div class="logo-card"><img src="assets/vikram_simhapuri_logo.png" alt="Vikram Simhapuri University Logo"></div>
-                            <div class="logo-card"><img src="assets\Vikram_simhapuri_logo.jpg" alt="Sri Padmavathi Logo"></div>
+                            <div class="logo-card"><img src="assets/Vikram_simhapuri_logo.jpg" alt="Vikram Simhapuri University Logo"></div>
+                            <div class="logo-card"><img src="assets/sri Padmavathi logo.jpg" alt="Sri Padmavathi Logo"></div>
                             <div class="logo-card"><img src="assets/KBN_logo.jpg" alt="KBN College Logo"></div>
                             <div class="logo-card"><img src="assets/ciet_logo.webp" alt="CIET Logo"></div>
                             

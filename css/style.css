@@ -851,17 +851,18 @@ body.mobile-nav-open .mobile-nav-menu {
 
 .tab-buttons {
     display: flex;
-    justify-content: center;
+    /* FIX: Use space-between to stretch links across the container and allow flex-wrap on tiny screens */
+    justify-content: space-between; 
     border-bottom: 2px solid var(--color-light-grey);
     padding: 0 20px;
     max-width: 900px;
-    margin: 0 auto 40px; /* fixed duplicate margin from previous file */
+    margin: 0 auto 40px; 
 }
 
 .tab-link {
     background: none;
     border: none;
-    padding: 15px 30px;
+    padding: 15px 10px; /* Reduced horizontal padding */
     font-size: 1.05rem;
     font-weight: 500;
     color: var(--color-dark-bg);
@@ -869,7 +870,11 @@ body.mobile-nav-open .mobile-nav-menu {
     transition: all 0.3s ease;
     position: relative;
     outline: none;
-    margin: 0 10px;
+    margin: 0 5px; /* Reduced margin */
+    
+    /* FIX: Allow tabs to take equal flexible space and force center alignment */
+    flex-grow: 1; 
+    text-align: center;
 }
 
 .tab-link.active {
@@ -1167,6 +1172,10 @@ body.mobile-nav-open .mobile-nav-menu {
     text-align: left;
     max-width: 900px;
     margin: 0 auto;
+}
+
+.contact-info {
+    padding-right: 20px;
 }
 
 .contact-info .section-heading-guaranteed,
@@ -1997,6 +2006,12 @@ body.mobile-nav-open .mobile-nav-menu {
     .logo-scroller-track .logo-card img {
         max-height: 45px;
     }
+    
+    /* Target medium screens to give tabs more space to breathe */
+    .tab-link {
+        padding: 15px 10px;
+        font-size: 1rem;
+    }
 }
 @media (max-width: 650px) {
     .funding-form-grid {
@@ -2045,5 +2060,19 @@ body.mobile-nav-open .mobile-nav-menu {
     }
     .section-heading-guaranteed {
         font-size: 2rem !important;
+    }
+    
+    /* FIX: Force tab links to stack/use minimal padding on smallest screens */
+    .tab-buttons {
+        padding: 0 5px; /* Reduce container padding */
+        flex-wrap: wrap; 
+        justify-content: center; /* Center groups if they wrap */
+    }
+    
+    .tab-link {
+        font-size: 0.9rem;
+        padding: 8px 5px; /* Minimal padding */
+        margin: 0 2px; /* Minimal margin */
+        flex-basis: 30%; /* Give minimum width, allowing flex-grow to share space */
     }
 }

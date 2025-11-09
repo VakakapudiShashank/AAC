@@ -252,9 +252,8 @@ body.mobile-nav-open .mobile-nav-menu {
     font-weight: 700;
 }
 
-/* FIX: Mobile Funding Button Hover Effect */
+/* FIX: Mobile Funding Button Hover Effect (Primary Blue background, White text) */
 .mobile-nav-menu .mobile-funding-button-wrap .btn:hover {
-    /* Swap colors on hover (Primary Blue background, White text) */
     background-color: var(--color-primary-blue);
     color: var(--color-white);
     border-color: var(--color-primary-blue);
@@ -375,7 +374,7 @@ body.mobile-nav-open .mobile-nav-menu {
     to { width: 100% }
 }
 
-/* ------------------ END HERO ANIMATION STYLES ------------------ */
+/* ------------------ HERO ANIMATION STYLES ------------------ */
 
 /* =======================
        5. PAGE SECTIONS (Placeholder/General)
@@ -447,6 +446,37 @@ body.mobile-nav-open .mobile-nav-menu {
 
 .wide-subtitle {
     max-width: 800px;
+}
+
+/* ==========================================================
+       NEW: FLIP ANIMATION DEFINITIONS 
+========================================================== */
+
+/* Define the 3D rotation and animation */
+@keyframes flip-720 {
+    0% { 
+        transform: perspective(1000px) rotateY(0deg) scale(0.9); 
+        opacity: 0.5;
+    }
+    100% { 
+        transform: perspective(1000px) rotateY(720deg) scale(1); /* Two full rotations */
+        opacity: 1;
+    }
+}
+
+/* Class applied to the card on click to trigger the rotation */
+.card-flip-active {
+    animation: flip-720 1s ease-out forwards; /* 1 second duration, keeps final state */
+}
+
+/* Ensure the card has a transition and 3D context */
+.portfolio-card, 
+.team-card, 
+.service-card, 
+.event-card {
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    transform-style: preserve-3d;
 }
 
 /* =======================
@@ -1137,10 +1167,6 @@ body.mobile-nav-open .mobile-nav-menu {
     text-align: left;
     max-width: 900px;
     margin: 0 auto;
-}
-
-.contact-info {
-    padding-right: 20px;
 }
 
 .contact-info .section-heading-guaranteed,

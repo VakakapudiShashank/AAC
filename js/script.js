@@ -193,6 +193,15 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Toggle the 'collapsed' class on the header for styling changes (like rotating the arrow)
             header.classList.toggle('collapsed');
+
+            // NEW: Add card flip animation on service card open
+            if (!details.classList.contains('hidden')) {
+                card.classList.add('card-flip-active');
+                // Remove class after animation finishes (1s defined in CSS)
+                setTimeout(() => {
+                    card.classList.remove('card-flip-active');
+                }, 1000); 
+            }
         });
     });
 
@@ -261,6 +270,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (eventModal && eventTriggers.length > 0) {
         eventTriggers.forEach(trigger => {
             trigger.addEventListener('click', () => {
+                // Apply flip animation to the card when clicked
+                trigger.classList.add('card-flip-active');
+                setTimeout(() => {
+                    trigger.classList.remove('card-flip-active');
+                }, 1000); 
+                
                 const title = trigger.getAttribute('data-title');
                 const date = trigger.getAttribute('data-date');
                 const location = trigger.getAttribute('data-location');
@@ -282,6 +297,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    
+    // ---------------- Portfolio Card Click Flip ----------------
+    document.querySelectorAll('.portfolio-card .card-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const card = link.closest('.portfolio-card');
+            
+            // Apply flip animation to the card
+            card.classList.add('card-flip-active');
+            
+            // Prevent default navigation briefly until the animation completes
+            e.preventDefault();
+            e.stopPropagation();
+
+            // After animation, navigate to the link's href
+            setTimeout(() => {
+                card.classList.remove('card-flip-active');
+                window.location.href = link.href;
+            }, 1000); // Wait 1 second for the animation
+        });
+    });
+
 
     // ---------------- Team Member Modal Logic ----------------
     const teamModal = document.getElementById('teamModal');
@@ -290,6 +326,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (teamModal && teamTriggers.length > 0) {
         teamTriggers.forEach(trigger => {
             trigger.addEventListener('click', () => {
+                // Apply flip animation to the card when clicked
+                trigger.classList.add('card-flip-active');
+                setTimeout(() => {
+                    trigger.classList.remove('card-flip-active');
+                }, 1000); 
+
                 const name = trigger.getAttribute('data-name');
                 const title = trigger.getAttribute('data-title');
                 const initials = trigger.getAttribute('data-initials');
